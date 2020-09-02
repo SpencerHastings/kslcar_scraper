@@ -10,7 +10,6 @@ python3
 - html5lib
 - requests
 - jinja2
-WIP could be other dependencies
 
 ## Usage
 python ksl-scraper.py "{ksl-search-link}"
