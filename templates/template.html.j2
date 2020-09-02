@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div>
+            <h1>
+                Cars From Search
+            </h1>
+        </div>
+        <div class="accordion" id="accordionPlaces">
+            <!-- each location -->
+            {% for i in range(length) %}
+            <div class="card">
+                <div class="card-header" id="heading{{i}}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapse{{i}}" href="#collapse{{i}}" aria-expanded="false" aria-controls="collapse{{i}}">
+                            {{listingsItems[i][0]}}
+                        </button>
+                    </h2>
+                </div>
+                
+                <div id="collapse{{i}}" class="collapse" aria-labelledby="heading{{i}}"
+                    data-parent="#accordionPlaces">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- each listing -->
+                            {% for ll in listingsItems[i][1]%}
+                            <div class="col-sm">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <img src="{{ll['image']}}" class="card-img-top" alt="...">
+
+                                        <p class="card-text">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">{{ll['data']['make']}}</li>
+                                                <li class="list-group-item">{{ll['data']['model']}}</li>
+                                                <li class="list-group-item">{{ll['data']['trim']}}</li>
+                                                <li class="list-group-item">{{ll['data']['makeYear']}}</li>
+                                                <li class="list-group-item">{{ll['data']['mileage']}} miles</li>
+                                                <li class="list-group-item">${{ll['data']['price']}}</li>
+                                                <li class="list-group-item">{{ll['data']['sellerType']}}</li>
+                                                <li class="list-group-item">{{ll['data']['vin']}}</li>
+                                            </ul>
+                                        </p>
+                                        <a href="{{ll['link']}}"
+                                            class="btn btn-primary">Go To Listing</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- end each listing -->
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            {% endfor %}
+            <!-- end each location -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
